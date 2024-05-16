@@ -1,0 +1,1 @@
+ScanPort is a simple tool to scan ports on a given host whith yaml configuration.
