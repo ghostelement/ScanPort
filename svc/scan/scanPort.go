@@ -9,9 +9,6 @@ import (
 	"time"
 )
 
-// 主机列表
-//var hostlist = []string{"www.rsyjk.com", "140.249.217.169", "mis.jiankangjining.com", "yy.chinaqjwx.cn", "182.139.182.190", "gmc51.cn", "www.jiankangpl.com", "123.234.227.149", "222.87.248.148", "120.221.72.28", "fzd.xcloudtech.com", "wellness.shandonghealthcare.com", "health.jiankangchizhou.com", "mdqzyyy.jk189.net", "140.249.214.112", "150.138.114.202", "www.jkfw.hspqrmyy.com"}
-
 func checkPort(host string, port int, timeout int) bool {
 	//fmt.Println(host, port, time.Duration(timeout)*time.Microsecond)
 	conn, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", host, port), time.Duration(timeout)*time.Millisecond)

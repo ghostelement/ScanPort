@@ -61,9 +61,9 @@ var rootCmd = &cobra.Command{
 // 添加一个名为 "version" 的标志（对应 `-v` 和 `--version`）
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the version number of adp",
+	Short: "Print the version number of scanport",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("adp version: %s\n", rootCmd.Version)
+		fmt.Printf("scanport version: %s\n", rootCmd.Version)
 	},
 }
 
