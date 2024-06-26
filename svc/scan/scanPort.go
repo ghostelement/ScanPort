@@ -21,13 +21,13 @@ func checkPort(host string, port int, timeout int) bool {
 
 var logMutex sync.Mutex // 互斥锁，用于保护日志写入操作
 
-func scanHost(host string, portlist []int, concurrency int, timeout int) {
+func scanHost(host string, portlist int, concurrency int, timeout int) {
 	//defer wg.Done()
 	var localWg sync.WaitGroup
 	//localWg.Add(len(portlist))
 
 	pool := make(chan struct{}, concurrency)
-	for _, port := range portlist {
+	for port := 1; port <= portlist; port++ {
 		localWg.Add(1)
 		pool <- struct{}{}
 		go func(port int) {
@@ -49,10 +49,7 @@ func scanHost(host string, portlist []int, concurrency int, timeout int) {
 
 func (c *Job) Scan() {
 	// 初始化端口1~65535
-	portlist := make([]int, 65535)
-	for i := 0; i < 65535; i++ {
-		portlist[i] = i + 1
-	}
+	portlist := 65535
 
 	// 打开日志文件
 	logFile, err := os.OpenFile("scanport.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
